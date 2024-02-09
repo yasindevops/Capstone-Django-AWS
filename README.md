@@ -2,7 +2,7 @@
 
 ## Description
 
-The Clarusway Blog Page Application aims to deploy blog application as a web application written Django Framework on AWS Cloud Infrastructure. This infrastructure has Application Load Balancer with Auto Scaling Group of Elastic Compute Cloud (EC2) Instances and Relational Database Service (RDS) on defined VPC. Also, The Cloudfront and Route 53 services are located in front of the architecture and manage the traffic in secure. User is able to upload pictures and videos on own blog page and these are kept on S3 Bucket. This architecture will be created by Firms DevOps Guy.
+The Clarusway Blog Page Application aims to deploy blog application as a web application written Django Framework on AWS Cloud Infrastructure. This infrastructure has Application Load Balancer with Auto Scaling Group of Elastic Compute Cloud (EC2) Instances and Relational Database Service (RDS) on defined VPC. Also, The Cloudfront and Route 53 services are located in front of the architecture and manage the traffic in secure. User is able to upload pictures and videos on own blog page and these are kept on S3 Bucket. 
 
 ## Problem Statement
 
@@ -28,7 +28,7 @@ In the architecture, you can configure your infrastructure using the followings,
 
     - VPC has two AZs and every AZ has 1 public and 1 private subnets.
 
-    - VPC has Internet Gateway
+    - VPC has Internet Gateway.
 
     - One of public subnets has NAT Instance.
 
@@ -46,23 +46,23 @@ In the architecture, you can configure your infrastructure using the followings,
 
     - use all Availability Zones on created VPC.
 
-    - set desired capacity of instances to  ` 2`
+    - set desired capacity of instances to  ` 2`.
 
-    - set minimum size of instances to  ` 2`
+    - set minimum size of instances to  ` 2`.
 
-    - set maximum size of instances to  ` 4`
+    - set maximum size of instances to  ` 4`.
 
-    - set health check grace period to  ` 90 seconds`
+    - set health check grace period to  ` 90 seconds`.
 
-    - set health check type to  ` ELB`
+    - set health check type to  ` ELB`.
 
-    - Scaling Policy --> Target Tracking Policy
+    - Scaling Policy --> Target Tracking Policy;
 
-      - Average CPU utilization (set Target Value ` %70`)
+      - Average CPU utilization (set Target Value ` %70`).
 
-      - seconds warm up before including in metric ---> `200`
+      - seconds warm up before including in metric ---> `200`.
 
-      - Set notification to your email address for launch, terminate, fail to launch, fail to terminate instance situations
+      - Set notification to your email address for launch, terminate, fail to launch, fail to terminate instance situations.
 
   - ALB configuration;
     
@@ -71,18 +71,18 @@ In the architecture, you can configure your infrastructure using the followings,
     - Certification should be created for secure connection (HTTPS) 
       - To create certificate, AWS Certificate Manager can be utilized.
 
-    - ALB redirects to traffic from HTTP to HTTPS
+    - ALB redirects to traffic from HTTP to HTTPS.
 
-    - Target Group
-      - Health Check Protocol is going to be HTTP
+    - Target Group;
+      - Health Check Protocol is going to be HTTP.
 
   - The Launch Template should be configured to;
 
-    - Prepare Django environment on EC2 instance based on Developer Notes,
+    - Prepare Django environment on EC2 instance based on Developer Notes.
 
-    - Download the "clarusway_aws_capstone" folder from Github repository,
+    - Download the "clarusway_aws_capstone" folder from Github repository.
 
-    - Install the requirements using requirements.txt in 'clarusway_aws_capstone' folder
+    - Install the requirements using requirements.txt in 'clarusway_aws_capstone' folder.
 
     - Deploy the Django application on port 80.
 
@@ -90,13 +90,13 @@ In the architecture, you can configure your infrastructure using the followings,
 
     - EC2 Instances type can be configured as `t2.micro`.
 
-    - Instance launched should be tagged `Clarusway AWS Capstone Project`
+    - Instance launched should be tagged `Clarusway AWS Capstone Project`.
 
     - Since Django App needs to talk with S3, S3 full access role must be attached EC2s. 
 
   - For RDS Database Instance;
   
-    - Instance type can be configured as `db.t2.micro`
+    - Instance type can be configured as `db.t2.micro`.
 
     - Database engine can be `MySQL` with version of `8.0.33`.
 
@@ -112,7 +112,7 @@ In the architecture, you can configure your infrastructure using the followings,
 
     - Origin Protocol policy can be selected as `HTTPS only`.
 
-    - Viewer Protocol Policy can be selected as `Redirect HTTP to HTTPS`
+    - Viewer Protocol Policy can be selected as `Redirect HTTP to HTTPS`.
 
   - As cache behavior;
 
@@ -120,10 +120,12 @@ In the architecture, you can configure your infrastructure using the followings,
 
     - Forward Cookies must be selected All.
 
-    - Newly created ACM Certificate should be used for securing connections. (You can use same certificate with ALB)
+    - Newly created ACM Certificate should be used for securing connections. (You can use same certificate with ALB).
 
-    - Cache key and origin requests
-      - Use legacy cache settings
+    - Cache key and origin requests;
+      
+      - Use legacy cache settings;
+        
         Headers     : Include the following headers
           Add Header
           - Accept
